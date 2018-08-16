@@ -139,6 +139,8 @@ export default class FilterMenu<T> extends React.Component<FilterMenuProps<T>, F
   renderMenus(items: ColumnFilterItem[]): React.ReactElement<any>[] {
     return items.map(item => {
       if (item.children && item.children.length > 0) {
+				if (!item.value) 
+					return null
         const { keyPathOfSelectedItem } = this.state;
         const containSelected = Object.keys(keyPathOfSelectedItem).some(
           key => keyPathOfSelectedItem[key].indexOf(item.value) >= 0,
